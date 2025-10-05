@@ -34,7 +34,6 @@ header {
 
 .logo {
     color: #00bcd4;
-    /* Blue accent */
     font-size: 1.5rem;
     font-weight: bold;
 }
@@ -94,6 +93,21 @@ header {
     font-size: 1.2rem;
     color: #ccc;
 }
+.hero-text h1 span {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #00bcd4; 
+    font-size: clamp(1.5rem, 5vw, 3rem); 
+    max-width: 100%; 
+    animation: typing 2s steps(30) forwards; 
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; border-right: none; }
+}
+
 
 .btn {
     display: inline-block;
@@ -158,14 +172,9 @@ header {
     object-fit: cover;
     border-radius: 50%;
     border: 3px solid #00bcd4;
-    /* box-shadow: 0 0 20px rgba(0, 188, 212, 0.4); */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.about-image img:hover {
-    /* transform: scale(1.05); */
-    /* box-shadow: 0 0 30px rgba(0, 188, 212, 0.6); */
-}
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -180,7 +189,7 @@ header {
     }
 }
 
-/* ---------- Journey Section ---------- */
+/* ___________________ Journey Section     _________ */
 .journey {
     padding: 100px 10%;
     background-color: #121212;
@@ -287,7 +296,7 @@ header {
 
 
 
-/* ---------- Skills Section ---------- */
+/*              Skills Section                 */
 .skills {
     padding: 100px 10%;
     background: linear-gradient(135deg, #0d0d0d 0%, #111111 40%, #141427 100%);
@@ -413,17 +422,14 @@ header {
 
 .project-card img {
     width: 100%;
-    /* Full width of card */
     height: auto;
     border-radius: 8px;
     margin: 10px 0;
-    /* Space around image */
     transition: transform 0.3s ease;
 }
 
 .project-card img:hover {
     transform: scale(1.05);
-    /* Subtle zoom effect */
 }
 
 .project-card h3 {
@@ -501,10 +507,6 @@ footer {
     color: #888;
 }
 
-/* footer {
-    background: linear-gradient(90deg, #0d0d0d, #1a1a1a, #0d0d0d);
-    color: #888;
-} */
 
 footer {
     background: #0a0a0a;
