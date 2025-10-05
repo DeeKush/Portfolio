@@ -548,3 +548,34 @@ footer .socials a:hover {
         display: block;
     }
 }
+.menu-checkbox {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        background-color: #1e1e1e;
+        position: absolute;
+        top: 60px;
+        right: -220px;
+        width: 200px;
+        padding: 20px;
+        transition: right 0.3s ease;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: #fff;
+    }
+
+    .menu-checkbox:checked ~ .nav-links {
+        right: 0;
+    }
+}
