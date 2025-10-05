@@ -334,6 +334,7 @@ header {
 }
 
 .skill-card {
+    width: 240px;
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(10px);
     border-radius: 15px;
@@ -356,7 +357,7 @@ header {
 }
 
 .skill-card p {
-    width: 250px;
+    
     color: #ccc;
     font-size: 1rem;
     line-height: 1.6;
