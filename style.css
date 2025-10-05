@@ -326,9 +326,10 @@ header {
 }
 
 .skills-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
     margin-top: 60px;
 }
 
@@ -355,6 +356,7 @@ header {
 }
 
 .skill-card p {
+    width: 250px;
     color: #ccc;
     font-size: 1rem;
     line-height: 1.6;
