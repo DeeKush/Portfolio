@@ -1,0 +1,62 @@
+.journey__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--space-5);
+  padding: clamp(24px, 2.8vw, 38px) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.journey__row:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.journey__title {
+  font-size: clamp(20px, 2.4vw, 34px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.journey__subtitle {
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+}
+
+.journey__date {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Mouse users: rows rest in grey and light up to white on hover.
+   Touch screens keep the full-contrast colours above. */
+@media (hover: hover) {
+  .journey__title,
+  .journey__subtitle,
+  .journey__date {
+    transition: color 0.35s ease;
+  }
+
+  .journey__title { color: rgba(255, 255, 255, 0.45); }
+  .journey__subtitle { color: rgba(255, 255, 255, 0.3); }
+  .journey__date { color: rgba(255, 255, 255, 0.4); }
+
+  .journey__row:hover .journey__title,
+  .journey__row:hover .journey__date {
+    color: var(--color-white);
+  }
+
+  .journey__row:hover .journey__subtitle {
+    color: rgba(255, 255, 255, 0.65);
+  }
+}
+
+@media (max-width: 480px) {
+  .journey__row {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+}
