@@ -1,0 +1,160 @@
+.services__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.service {
+  position: relative;
+  border-bottom: 1px solid var(--color-line);
+  border-radius: 0;
+  transition: background-color 0.45s ease, border-radius 0.45s ease, padding 0.5s var(--ease-out),
+    border-color 0.3s ease, color 0.3s ease;
+}
+
+.service:first-child {
+  border-top: 1px solid var(--color-line);
+}
+
+.service.is-open {
+  z-index: 1;
+  padding: 12px clamp(20px, 3vw, 44px) clamp(28px, 3vw, 44px);
+  border-color: transparent;
+  border-radius: 28px;
+  background: var(--color-dark);
+  color: var(--color-white);
+}
+
+/* Collapses with no animation (used when hovering from one row to a row below it). */
+.service.is-instant,
+.service.is-instant * {
+  transition: none !important;
+}
+
+/* Remove the hairline under the row above an open panel too. */
+.service:has(+ .is-open) {
+  border-bottom-color: transparent;
+}
+
+.service__trigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: clamp(22px, 2.6vw, 36px) 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  color: inherit;
+}
+
+.service__trigger:focus-visible {
+  outline-offset: 6px;
+  border-radius: 8px;
+}
+
+.is-open .service__trigger:focus-visible {
+  outline-color: var(--color-white);
+}
+
+.service__title {
+  font-size: clamp(26px, 4.4vw, 64px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  transition: transform 0.45s var(--ease-out), color 0.3s ease;
+}
+
+.service:not(.is-open) .service__trigger:hover .service__title {
+  transform: translateX(14px);
+}
+
+.service__icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  transition: transform 0.45s var(--ease-out), background-color 0.3s ease;
+}
+
+.service:not(.is-open) .service__trigger:hover .service__icon {
+  transform: rotate(45deg);
+}
+
+.is-open .service__icon {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.is-open .service__trigger:hover .service__icon {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Height animates via the grid-rows trick; hidden from AT while closed. */
+.service__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 0.5s var(--ease-out), visibility 0s linear 0.5s;
+}
+
+.is-open .service__panel {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.service__panel-inner {
+  overflow: hidden;
+}
+
+.service__desc {
+  max-width: 560px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Tilted card that pops out of the panel's top edge. */
+.service__image {
+  position: absolute;
+  top: 0;
+  right: clamp(84px, 14%, 220px);
+  z-index: 2;
+  width: clamp(150px, 19vw, 280px);
+  aspect-ratio: 320 / 220;
+  overflow: hidden;
+  border: 5px solid var(--color-white);
+  border-radius: 18px;
+  background: var(--color-white);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-55%) rotate(8deg);
+}
+
+.service__image > * {
+  border-radius: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-open .service__image {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@media (max-width: 767px) {
+  .service__icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .service__image {
+    right: 56px;
+    width: 140px;
+  }
+}
