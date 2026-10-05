@@ -1,0 +1,20 @@
+.social-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  border-radius: var(--radius-pill);
+  background: var(--color-white);
+  color: var(--color-text);
+  box-shadow: var(--shadow-soft);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  transition: transform 0.25s var(--ease-out), box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.social-pill:hover {
+  transform: translateX(-4px);
+  background: #f7f7f7;
+  box-shadow: var(--shadow-lift);
+}
