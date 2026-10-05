@@ -1,0 +1,58 @@
+.pill-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  transition: transform 0.25s var(--ease-out), background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pill-button--dark {
+  background: var(--color-black);
+  color: var(--color-white);
+  box-shadow: var(--shadow-btn);
+}
+
+.pill-button--dark:hover {
+  background: #2e2e2e;
+}
+
+.pill-button--light {
+  background: var(--color-white);
+  color: var(--color-text);
+  box-shadow: var(--shadow-soft);
+}
+
+.pill-button--light:hover {
+  background: #f7f7f7;
+  box-shadow: var(--shadow-lift);
+}
+
+.pill-button:hover {
+  transform: translateY(-2px);
+}
+
+.pill-button:active {
+  transform: translateY(0);
+}
+
+.pill-button__arrow {
+  display: inline-flex;
+  transition: transform 0.25s var(--ease-out);
+}
+
+.pill-button:hover .pill-button__arrow {
+  transform: translate(2px, -2px);
+}
+
+.pill-button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+  transform: none;
+}

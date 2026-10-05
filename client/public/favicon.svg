@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>DK</title>
+  <rect width="64" height="64" rx="14" fill="#fff"/>
+  <rect x="1" y="1" width="62" height="62" rx="13" fill="none" stroke="#111" stroke-opacity="0.12" stroke-width="2"/>
+  <!-- D -->
+  <path fill="#111" fill-rule="evenodd" d="M9 16h10c8.3 0 13 6.2 13 16s-4.7 16-13 16H9zm6 6v20h4c4.4 0 7-3.6 7-10s-2.6-10-7-10z"/>
+  <!-- K -->
+  <path fill="#111" d="M35 16h6v12.6L50.4 16H58L47.7 29.5 58.4 48h-7.1l-7.6-13.5-2.7 3.3V48h-6z"/>
+</svg>

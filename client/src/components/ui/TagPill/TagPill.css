@@ -1,0 +1,20 @@
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  border-radius: var(--radius-pill);
+  color: var(--color-muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.tag-pill--grey {
+  background: var(--color-surface);
+}
+
+.tag-pill--white {
+  background: var(--color-white);
+  box-shadow: var(--shadow-soft);
+}

@@ -1,0 +1,37 @@
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #f3f3f3;
+  --color-text: #111111;
+  --color-muted: #6b6b6b;
+  --color-faint: #a3a3a3;
+  --color-line: #e2e2e2;
+  --color-dark: #1f1f1f;
+  --color-black: #111111;
+  --color-white: #ffffff;
+  --color-placeholder: #e4e4e4;
+  --color-status: #22c55e;
+
+  --font: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 40px;
+  --space-7: 64px;
+
+  --gutter: clamp(16px, 2.8vw, 40px);
+  --section-y: clamp(72px, 9vw, 140px);
+  --max-width: 1280px;
+
+  --radius-pill: 999px;
+  --radius-card: 24px;
+  --radius-media: 16px;
+
+  --shadow-soft: 0 4px 18px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-lift: 0 18px 40px rgba(0, 0, 0, 0.1);
+  --shadow-btn: 0 6px 18px rgba(0, 0, 0, 0.22);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
