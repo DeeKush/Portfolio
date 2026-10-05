@@ -1,0 +1,8 @@
+.page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  background: var(--color-dark);
+  visibility: hidden;
+  pointer-events: none;
+}
