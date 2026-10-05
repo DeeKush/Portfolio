@@ -1,0 +1,63 @@
+.work__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.work__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 5px;
+  border-radius: var(--radius-pill);
+  background: var(--color-white);
+  box-shadow: var(--shadow-soft);
+}
+
+.work__filter {
+  padding: 9px 16px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-muted);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.work__filter:hover {
+  color: var(--color-text);
+}
+
+.work__filter.is-active {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.work__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+}
+
+.work .notice {
+  margin-top: var(--space-5);
+}
+
+@media (max-width: 767px) {
+  .work__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.work__item {
+  display: flex;
+}
+
+.work__item > .project-card {
+  flex: 1;
+}
