@@ -1,0 +1,234 @@
+.hero {
+  --name-size: min(8.9vw, 21svh);
+  --name-top: 20svh; /* where the top of the letters sits */
+  --photo-h: min(82svh, 75vw);
+  --side-w: 260px; /* width reserved for the intro text and the social pills */
+  position: relative;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+.hero__intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 800;
+  background: var(--color-bg);
+}
+
+/* ---- Name ---- */
+.hero__name {
+  position: absolute;
+  /* The line box starts a little above the capitals, hence the 0.13em. */
+  top: calc(var(--name-top) - 0.13em);
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 0.3em;
+  padding: 0 var(--gutter);
+  font-size: var(--name-size);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.hero__first,
+.hero__last {
+  display: inline-flex;
+}
+
+.hero__letter {
+  display: inline-block;
+}
+
+/* Outlined name. A transparent fill shows Manrope's overlapping glyph contours
+   (e.g. a box inside the "A"), so the fill matches the background and the stroke
+   is painted underneath it: only the outer half of the stroke stays visible. */
+.hero__first {
+  color: var(--color-bg);
+  -webkit-text-stroke: 4px var(--color-black);
+  paint-order: stroke fill;
+}
+
+.hero__last {
+  color: var(--color-black);
+}
+
+/* ---- Photo ---- */
+/* Starts just above the bottom of the letters so the hair overlaps them, and runs
+   past the bottom edge of the hero (which crops the shoulders). */
+.hero__photo-wrap {
+  position: absolute;
+  top: calc(var(--name-top) + 0.5 * var(--name-size));
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.hero__photo-frame {
+  --x: -999px;
+  --y: -999px;
+  --s: 0; /* spotlight size, 0..1, driven from JS */
+  --spot-r: clamp(75px, calc(var(--photo-h) * 0.18), 170px);
+  position: relative;
+  flex-shrink: 0;
+  height: max(var(--photo-h), 100%);
+  aspect-ratio: 996 / 903; /* deepak.png */
+  /* Never wider than the space between the side blocks; the sides crop instead. */
+  max-width: calc(100vw - 2 * (var(--gutter) + var(--side-w) + 24px));
+  pointer-events: auto;
+  /* soften the crop on the shoulders */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+
+.hero__photo {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: 50% 0;
+  filter: grayscale(1) contrast(1.05);
+}
+
+/* Colour copy on top, visible only inside a soft circle around the cursor. */
+.hero__photo--color {
+  position: absolute;
+  inset: 0;
+  filter: none;
+  --spot: radial-gradient(
+    circle calc(var(--spot-r) * var(--s) + 0.5px) at var(--x) var(--y),
+    #000 0%,
+    #000 55%,
+    transparent 100%
+  );
+  -webkit-mask-image: var(--spot);
+  mask-image: var(--spot);
+}
+
+/* ---- Intro (bottom left) ---- */
+.hero__intro {
+  position: absolute;
+  left: var(--gutter);
+  bottom: 13%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: var(--side-w);
+}
+
+.hero__role {
+  font-size: clamp(20px, 1.8vw, 26px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.hero__tagline {
+  margin-bottom: 14px;
+  color: var(--color-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ---- Socials (right) ---- */
+.hero__socials {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 10%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+@media (max-width: 1100px) {
+  .hero {
+    --side-w: 220px;
+  }
+}
+
+/* ---- Tablet and mobile: stack name, photo, text, pills ---- */
+@media (max-width: 900px) {
+  .hero {
+    --photo-w: min(118vw, 680px);
+    --photo-h: calc(var(--photo-w) * 903 / 996);
+    height: auto;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(110px, 16vw, 150px) var(--gutter) 40px;
+  }
+
+  .hero__name {
+    position: relative;
+    top: auto;
+    padding: 0;
+    font-size: 8.9vw;
+  }
+
+  .hero__photo-wrap {
+    position: relative;
+    top: auto;
+    margin: -4vw calc(-1 * var(--gutter)) 0;
+  }
+
+  .hero__photo-frame {
+    width: var(--photo-w);
+    height: auto;
+    max-width: none;
+  }
+
+  .hero__intro,
+  .hero__socials {
+    position: static;
+    max-width: none;
+  }
+
+  .hero__intro {
+    margin-top: 28px;
+  }
+
+  .hero__socials {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    padding-top: 96px;
+  }
+
+  .hero__name {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    font-size: 15vw;
+    line-height: 0.98;
+  }
+
+  .hero__first {
+    -webkit-text-stroke-width: 3px;
+  }
+
+  .hero__photo-wrap {
+    margin-top: -5vw;
+  }
+}
